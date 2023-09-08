@@ -17,9 +17,12 @@ fruits_selected=streamlit.multiselect("Pick Some fruits:", list(my_fruit_list.in
 fruits_to_show = my_fruit_list.loc[fruits_selected]
 streamlit.dataframe(fruits_to_show)
 streamlit.header("Fruityvice Fruit Advice!")
-fruit_choice = streamlit.text_input('What fruit would you like information about?','Kiwi')
+try:
+  
+fruit_choice = streamlit.text_input('What fruit would you like information about?')
+if not fruit_choice:
 streamlit.write('The user entered ', fruit_choice)
-
+else 
 #import requests
 #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/watermelon")
 #fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + "Kiwi")
@@ -29,6 +32,8 @@ fruityvice_response = requests.get("https://fruityvice.com/api/fruit/" + fruit_c
 fruityvice_normalized = pandas.json_normalize(fruityvice_response.json())
 # write your own comment - what does this do?
 streamlit.dataframe(fruityvice_normalized)
+except URLError as e:
+
 #donot run anythin past here while we troubleshoot
 streamlit.stop()
 import snowflake.connector
