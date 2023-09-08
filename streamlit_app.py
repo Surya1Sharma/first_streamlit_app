@@ -35,6 +35,6 @@ my_data_row = my_cur.fetchall()
 streamlit.text("The fruit load list contains:")
 streamlit.text(my_data_row)
 add_my_fruit = streamlit.text_input('What fruit would you like to Add?','Jackfruit')
-streamlit.write(fruit_choice)
+streamlit.write('Jackfruit')
 streamlit.text('Thanks for adding Jackfruit')
 
